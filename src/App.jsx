@@ -91,8 +91,8 @@ export default function App() {
   const getX = (income) => padding + ((income - minIncome) / (maxIncome - minIncome)) * (width - padding * 2);
   const getY = (spaces) => height - padding - ((spaces - minSpaces) / (maxSpaces - minSpaces)) * (height - padding * 2);
   
-  // High-contrast, publication-grade analytical color coding
-  const getBubbleColor = (spaces, singleParentPct) => {
+  // High-contrast, publication-grade analytical colour coding
+  const getBubbleColour = (spaces, singleParentPct) => {
     if (spaces < 15) {
       return '#dc2626'; // Deep Crimson (Critical Desert)
     }
@@ -131,10 +131,10 @@ export default function App() {
               {/* Increased description globally by 2pt (text-sm -> text-base, text-base -> text-lg) */}
               <div className="text-gray-700 text-base md:text-lg leading-relaxed space-y-4 pt-2">
                 <p>
-                  A surface-level analysis might simply suggest Toronto needs more child care. However, applying a GBA+ framework to these datasets reveals that where child care is built, and who it serves, is just as critical. Without targeting expansion in low-income, high-single-parent neighbourhoods, broad child care policies will inadvertently widen the socioeconomic and gender gap, leaving families living in the most vulnerable circumstances in child care deserts.
+                  A surface-level analysis might simply suggest Toronto needs more childcare. However, applying a GBA+ framework to these datasets reveals that where childcare is built, and who it serves, is just as critical. Without targeting expansion in low-income, high-single-parent neighbourhoods, broad childcare policies will inadvertently widen the socioeconomic and gender gap, leaving families living in the most vulnerable circumstances in childcare deserts.
                 </p>
                 <p>
-                  Using the Gender-Based Analysis Plus lens, the data matrix allows for a rigorous evaluation of three overlapping social identity factors: geography, socio-economic status, and parenthood composition.
+                  Using the Gender-Based Analysis Plus lens, the data matrix allows for a rigorous evaluation of three overlapping social identity factors: 1- Geography. 2- Socio-economic status. 3- Family Structure.
                 </p>
               </div>
             </div>
@@ -203,7 +203,7 @@ export default function App() {
                     </h2>
                     {/* Increased caption text by 2 points (text-xs md:text-sm -> text-sm md:text-base) */}
                     <p className="text-sm md:text-base text-gray-600">
-                      Bubble sizes scale by child population. Colors represent calculated access priority (Crimson indicating critical childcare deserts).
+                      Bubble sizes scale by child population. Colours represent calculated access priority (Crimson indicating critical childcare deserts).
                     </p>
                   </div>
                   {/* EXCEPTION: Kept button at original text-xs */}
@@ -256,7 +256,7 @@ export default function App() {
                     />
                     <text x={width - padding - 150} y={getY(CITY_AVERAGES.spacesPer100) - 6} fontSize="11" fill="#4b5563" className="font-semibold">City Avg Coverage ({CITY_AVERAGES.spacesPer100}/100)</text>
 
-                    {/* Axes */}
+                    {/* Axes (textAnchor="middle" is an SVG parameter and remains system standard) */}
                     <line x1={padding} y1={height - padding} x2={width - padding} y2={height - padding} stroke="#111827" strokeWidth="1" />
                     <line x1={padding} y1={padding} x2={padding} y2={height - padding} stroke="#111827" strokeWidth="1" />
                     
@@ -298,7 +298,7 @@ export default function App() {
                             cx={cx}
                             cy={cy}
                             r={isActive ? r + 3 : r}
-                            fill={getBubbleColor(node.spacesPer100, node.singleParentPct)}
+                            fill={getBubbleColour(node.spacesPer100, node.singleParentPct)}
                             fillOpacity={isActive ? "1" : "0.80"}
                             stroke={isActive ? "#000000" : (node.isModified ? "#000000" : "#ffffff")}
                             strokeWidth={isActive ? 2.5 : 1}
@@ -364,7 +364,7 @@ export default function App() {
                     Capital Allocation Sandbox
                   </h2>
                   <p className="text-base text-gray-600">
-                    Proactively target capital investments to build child care infrastructures. Choose any high-demand community below to direct physical expansion and assess spatial reform outcomes.
+                    Proactively target capital investments to build childcare infrastructure. Choose any high-demand community below to direct physical expansion and assess spatial reform outcomes.
                   </p>
                 </div>
 
@@ -433,7 +433,7 @@ export default function App() {
                           <div className="absolute top-0 left-0 w-1.5 h-full bg-red-600"></div>
                           <div className="text-base font-semibold text-black truncate mb-2 pl-2">{item.name}</div>
                           <div className="flex justify-between items-center text-sm text-gray-600 pl-2">
-                            <span className="text-red-700 font-medium">Coverage: {item.spacesPer100}/100</span>
+                            <span>Coverage: {item.spacesPer100}/100</span>
                             <span className="text-black">{item.singleParentPct}% Single Parent</span>
                           </div>
                         </div>
@@ -466,7 +466,7 @@ export default function App() {
                     {/* Matrix row contents increased from text-sm -> text-base */}
                     <tbody className="text-base divide-y divide-gray-200">
                       {filteredData.map(item => {
-                        const statusColorClass = 
+                        const statusColourClass = 
                           item.spacesPer100 < 15 ? 'text-red-600 bg-red-50 font-bold' : 
                           item.spacesPer100 < 30 ? 'text-amber-700 bg-amber-50 font-medium' : 
                           'text-teal-700 bg-teal-50 font-semibold';
@@ -482,7 +482,7 @@ export default function App() {
                             <td className="p-4 border-r border-gray-200">
                               {item.singleParentPct}%
                             </td>
-                            <td className={`p-4 text-center ${statusColorClass}`}>
+                            <td className={`p-4 text-center ${statusColourClass}`}>
                               {item.spacesPer100}
                             </td>
                           </tr>
@@ -502,7 +502,7 @@ export default function App() {
               {activeNeighbourhood ? (
                 activeNeighbourhood.spacesPer100 < 15 ? (
                    <p className="leading-relaxed text-base text-gray-800">
-                    <strong className="text-red-700">{activeNeighbourhood.name}</strong> exemplifies a systemic child care desert. With an average household income of <strong>${activeNeighbourhood.income.toLocaleString()}</strong> and <strong className="text-red-600">{activeNeighbourhood.singleParentPct}%</strong> single-parent families (predominantly women), families are faced with extreme structural disadvantages. Directing provincial <em>CWELCC ($10-a-day)</em> funds here without building physical capacity is practically useless because the waiting lists exceed child population limits by over 6:1.
+                    <strong className="text-red-700">{activeNeighbourhood.name}</strong> exemplifies a systemic childcare desert. With an average household income of <strong>${activeNeighbourhood.income.toLocaleString()}</strong> and <strong className="text-red-600">{activeNeighbourhood.singleParentPct}%</strong> single-parent families (predominantly women), families are faced with extreme structural disadvantages. Directing provincial <em>CWELCC ($10-a-day)</em> funds here without building physical capacity is practically useless because the waiting lists exceed child population limits by over 6:1.
                   </p>
                 ) : activeNeighbourhood.spacesPer100 > 35 ? (
                   <p className="leading-relaxed text-base text-gray-800">
@@ -515,7 +515,7 @@ export default function App() {
                 )
               ) : (
                 <p className="leading-relaxed text-base text-gray-500 italic">
-                  Hover or select a neighborhood in any panel to run live GBA+ impact analysis.
+                  Hover or select a neighbourhood in any panel to run live GBA+ impact analysis.
                 </p>
               )}
             </div>
@@ -539,7 +539,7 @@ export default function App() {
                       <div className="text-2xl text-black font-bold" style={{ fontFamily: serifFont }}>{activeNeighbourhood.name}</div>
                     </div>
 
-                    {/* Regional Benchmarks meters adjusted up by 2 points */}
+                    {/* Regional Benchmarks meters adjusted up by 2 points with functional status colouring */}
                     <div className="space-y-5">
                       <div>
                         <div className="flex justify-between text-sm font-semibold text-gray-600 mb-2">
@@ -621,7 +621,7 @@ export default function App() {
                   </div>
                 ) : (
                   <div className="flex-1 flex flex-col items-center justify-center text-center p-6 text-gray-500 text-base">
-                    <p>Select a neighborhood bubble on the plot to analyze gender equity profiles.</p>
+                    <p>Select a neighbourhood bubble on the plot to analyze gender equity profiles.</p>
                   </div>
                 )}
               </div>
