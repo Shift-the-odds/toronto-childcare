@@ -133,9 +133,16 @@ export default function App() {
                 <p>
                   A surface-level analysis might simply suggest Toronto needs more childcare. However, applying a GBA+ framework to these datasets reveals that where childcare is built, and who it serves, is just as critical. Without targeting expansion in low-income, high-single-parent neighbourhoods, broad childcare policies will inadvertently widen the socioeconomic and gender gap, leaving families living in the most vulnerable circumstances in childcare deserts.
                 </p>
-                <p>
-                  Using the Gender-Based Analysis Plus lens, the data matrix allows for a rigorous evaluation of three overlapping social identity factors: 1- Geography. 2- Socio-economic status. 3- Family Structure.
-                </p>
+                <div className="space-y-2">
+                  <p>
+                    Using the Gender-Based Analysis Plus lens, the data matrix allows for a rigorous evaluation of three overlapping social identity factors:
+                  </p>
+                  <div className="pl-4 space-y-1 font-semibold text-gray-900">
+                    <div>1- Geography.</div>
+                    <div>2- Socio-economic status.</div>
+                    <div>3- Family Structure.</div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
